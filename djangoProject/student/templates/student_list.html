@@ -1,0 +1,60 @@
+{% extends 'layout.html' %}
+{% block content %}
+<div>
+    <div class="container">
+        <div style="margin-bottom: 10px">
+            <a class="btn btn-primary" href="/students/add/">
+                <span class="glyphicon glyphicon-plus-sign" aria-hidden="true"></span>
+                添加学生
+            </a>
+            <a class="btn btn-primary" href="/students/delete/">
+                <span class="glyphicon glyphicon-minus-sign" aria-hidden="true"></span>
+                删除学生
+            </a>
+            <a class="btn btn-primary" href="/students/query/">
+                <span class="glyphicon glyphicon-th" aria-hidden="true"></span>
+                查询学生
+            </a>
+            <a class="btn btn-primary" href="/students/query/">
+                <span class="glyphicon glyphicon-edit" aria-hidden="true"></span>
+                编辑学生
+            </a>
+        </div>
+        <div>
+            <div class="panel panel-default">
+
+                <div class="panel-heading">
+                    <span class="glyphicon glyphicon-list" aria-hidden="true"></span>
+                    学生列表
+                </div>
+                <table class="table table-bordered">
+                    <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>姓名</th>
+                        <th>性别</th>
+                        <th>年龄</th>
+                        <th>手机号</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for dep in info %}
+                        <tr>
+                            <th scope="row">{{ dep.id }}</th>
+                            <td>{{ dep.name }}</td>
+                            <td>{{ dep.gender }}</td>
+                            <td>{{ dep.age }}</td>
+                            <td>{{ dep.phone }}</td>
+                            <td>
+                                <a href="/students/{{ dep.id }}/edit/" class="btn btn-primary btn-xs">编辑</a>
+                                <a href="/students/{{ dep.id }}/delete/" class="btn btn-danger btn-xs">删除</a>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
